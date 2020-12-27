@@ -1,0 +1,15 @@
+body, html {
+    height: 100%;
+}
+
+.jumbotron {
+    background: #f7f7f9 !important;
+}
+
+.jumbotron-fluid {
+    background: #f7f7f9 !important;
+}
+
+.btn {
+    background: #d2302c;
+}
