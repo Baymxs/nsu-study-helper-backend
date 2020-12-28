@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface EntryYearRepository extends CrudRepository<EntryYear, Long> {
     Optional<EntryYear> findByEntryYear(int entryYear);
+
+    Iterable<EntryYear> findAllByOrderByEntryYearAsc();
 }

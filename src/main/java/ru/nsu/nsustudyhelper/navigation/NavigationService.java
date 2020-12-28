@@ -32,7 +32,7 @@ public class NavigationService {
     public Set<EntryYearDto> getAllEntryYears() {
         Set<EntryYearDto> set = new HashSet<>();
 
-        for (EntryYear entryYear : entryYearRepository.findAll()) {
+        for (EntryYear entryYear : entryYearRepository.findAllByOrderByEntryYearAsc()) {
             set.add(dtoTransformService.convertToEntryYearDto(entryYear));
         }
 

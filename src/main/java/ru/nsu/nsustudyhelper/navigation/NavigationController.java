@@ -29,7 +29,7 @@ public class NavigationController {
         return navigationService.getAllSemesters();
     }
 
-    @GetMapping("/examination/all/{entryYear}/{semester}")
+    @GetMapping("/exam/all/{entryYear}/{semester}")
     public Set<ExaminationProcessDto> getAllExaminations(@PathVariable int entryYear, @PathVariable int semester) {
         return navigationService.getAllExaminations(entryYear, semester);
     }

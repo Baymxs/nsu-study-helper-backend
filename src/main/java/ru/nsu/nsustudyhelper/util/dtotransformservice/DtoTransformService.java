@@ -4,10 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import ru.nsu.nsustudyhelper.dto.*;
-import ru.nsu.nsustudyhelper.entity.EntryYear;
-import ru.nsu.nsustudyhelper.entity.ExaminationProcess;
-import ru.nsu.nsustudyhelper.entity.Mark;
-import ru.nsu.nsustudyhelper.entity.Semester;
+import ru.nsu.nsustudyhelper.entity.*;
 import ru.nsu.nsustudyhelper.entity.security.User;
 
 @Service
@@ -33,5 +30,13 @@ public class DtoTransformService {
 
     public MarkDto convertToMarkDto(Mark mark) {
         return modelMapper.map(mark, MarkDto.class);
+    }
+
+    public TeacherDto convertToTeacherDto(Teacher teacher) {
+        return modelMapper.map(teacher, TeacherDto.class);
+    }
+
+    public ExaminationCommentDto convertToExaminationDto(ExaminationComment examinationComment) {
+        return modelMapper.map(examinationComment, ExaminationCommentDto.class);
     }
 }

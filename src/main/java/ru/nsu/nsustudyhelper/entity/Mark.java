@@ -1,6 +1,8 @@
 package ru.nsu.nsustudyhelper.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import ru.nsu.nsustudyhelper.entity.security.User;
 
@@ -19,5 +21,5 @@ public class Mark extends BaseEntityWithId {
     @ManyToOne
     private User user;
 
-    private int mark;
+    private Integer mark;
 }
