@@ -10,5 +10,7 @@ import java.util.Set;
 public interface MarkRepository extends CrudRepository<Mark, Long> {
     Mark findByUserAndExaminationProcess(User user, ExaminationProcess examinationProcess);
 
+    Set<Mark> findAllByExaminationProcess(ExaminationProcess examinationProcess);
+
     Set<Mark> findAllByUser(User user);
 }

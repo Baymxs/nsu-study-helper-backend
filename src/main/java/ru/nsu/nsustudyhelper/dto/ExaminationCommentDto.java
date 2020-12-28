@@ -5,6 +5,6 @@ import ru.nsu.nsustudyhelper.entity.security.User;
 
 @Data
 public class ExaminationCommentDto {
-    private User user;
+    private UserDto user;
     private String commentText;
 }

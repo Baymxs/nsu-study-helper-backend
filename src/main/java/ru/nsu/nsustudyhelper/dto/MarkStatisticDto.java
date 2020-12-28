@@ -6,6 +6,6 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 public class MarkStatisticDto {
-    private final int mark;
+    private final MarkDto mark;
     private int count = 0;
 }

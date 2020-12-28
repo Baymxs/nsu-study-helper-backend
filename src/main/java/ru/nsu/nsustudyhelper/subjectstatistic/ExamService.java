@@ -27,22 +27,25 @@ public class ExamService {
     private final ExaminationCommentRepository examinationCommentRepository;
 
     public UserMarkDetailsDto getUserDetails(Principal principal, long examinationId) {
-        User user = userRepository.findByName(principal.getName());
-
         ExaminationProcess examinationProcess = examinationProcessRepository.
                 findById(examinationId).
                 orElseThrow(() -> new IllegalArgumentException("Экзамен " + examinationId + " не найден."));
 
-        MarkDto markDto = dtoTransformService.convertToMarkDto(markRepository.findByUserAndExaminationProcess(user, examinationProcess));
+        MarkDto markDto = null;
+        if (principal != null) {
+            User user = userRepository.findByName(principal.getName());
+            markDto = dtoTransformService.convertToMarkDto(markRepository.
+                    findByUserAndExaminationProcess(user, examinationProcess));
+        }
+
 
         Set<MarkStatisticDto> set = new HashSet<>();
 
-        MarkStatisticDto mark5 =  new MarkStatisticDto(5);
-        MarkStatisticDto mark4 =  new MarkStatisticDto(4);
-        MarkStatisticDto mark3 =  new MarkStatisticDto(3);
-        MarkStatisticDto mark2 =  new MarkStatisticDto(2);
-
-        for (Mark mark : markRepository.findAllByUser(user)) {
+        MarkStatisticDto mark5 =  new MarkStatisticDto(new MarkDto(5));
+        MarkStatisticDto mark4 =  new MarkStatisticDto(new MarkDto(4));
+        MarkStatisticDto mark3 =  new MarkStatisticDto(new MarkDto(3));
+        MarkStatisticDto mark2 =  new MarkStatisticDto(new MarkDto(2));
+        for (Mark mark : markRepository.findAllByExaminationProcess(examinationProcess)) {
             if (mark.getMark() == 5) {
                 mark5.setCount(mark5.getCount() + 1);
             } else if (mark.getMark() == 4) {
@@ -61,8 +64,8 @@ public class ExamService {
 
         UserMarkDetailsDto userMarkDetailsDto = new UserMarkDetailsDto();
 
-        userMarkDetailsDto.setMarkDto(markDto);
-        userMarkDetailsDto.setMarkStatistic(set);
+        userMarkDetailsDto.setCurrentUserMark(markDto);
+        userMarkDetailsDto.setMarkStatistics(set);
 
         return userMarkDetailsDto;
     }
