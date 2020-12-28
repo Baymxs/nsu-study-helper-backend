@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import ru.nsu.nsustudyhelper.dto.ExaminationProcessDto;
 import ru.nsu.nsustudyhelper.dto.MarkDto;
 import ru.nsu.nsustudyhelper.dto.MarkStatisticDto;
+import ru.nsu.nsustudyhelper.dto.UserMarkDetailsDto;
 import ru.nsu.nsustudyhelper.entity.ExaminationProcess;
 import ru.nsu.nsustudyhelper.entity.Mark;
 import ru.nsu.nsustudyhelper.entity.security.User;
@@ -21,33 +22,27 @@ import java.util.Set;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class SubjectStatisticService {
+public class ExamService {
     private final DtoTransformService dtoTransformService;
     private final MarkRepository markRepository;
     private final UserRepository userRepository;
     private final ExaminationProcessRepository examinationProcessRepository;
 
-    public MarkDto getMark(Principal principal, long examinationId) {
+    public UserMarkDetailsDto getUserDetails(Principal principal, long examinationId) {
         User user = userRepository.findByName(principal.getName());
 
         ExaminationProcess examinationProcess = examinationProcessRepository.
                 findById(examinationId).
                 orElseThrow(() -> new IllegalArgumentException("Экзамен " + examinationId + " не найден."));
 
-        Mark mark = markRepository.findByUserAndExaminationProcess(user, examinationProcess);
+        MarkDto markDto = dtoTransformService.convertToMarkDto(markRepository.findByUserAndExaminationProcess(user, examinationProcess));
 
-        return dtoTransformService.convertToMarkDto(mark);
-    }
-
-    public Set<MarkStatisticDto> getMarkStatistic(Principal principal) {
-        User user = userRepository.findByName(principal.getName());
         Set<MarkStatisticDto> set = new HashSet<>();
 
         MarkStatisticDto mark5 =  new MarkStatisticDto(5);
         MarkStatisticDto mark4 =  new MarkStatisticDto(4);
         MarkStatisticDto mark3 =  new MarkStatisticDto(3);
         MarkStatisticDto mark2 =  new MarkStatisticDto(2);
-
 
         for (Mark mark : markRepository.findAllByUser(user)) {
             if (mark.getMark() == 5) {
@@ -66,6 +61,11 @@ public class SubjectStatisticService {
         set.add(mark3);
         set.add(mark2);
 
-        return set;
+        UserMarkDetailsDto userMarkDetailsDto = new UserMarkDetailsDto();
+
+        userMarkDetailsDto.setMarkDto(markDto);
+        userMarkDetailsDto.setMarkStatistic(set);
+
+        return userMarkDetailsDto;
     }
 }
