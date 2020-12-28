@@ -14,8 +14,7 @@ import ru.nsu.nsustudyhelper.repository.ExaminationProcessRepository;
 import ru.nsu.nsustudyhelper.repository.SemesterRepository;
 import ru.nsu.nsustudyhelper.util.dtotransformservice.DtoTransformService;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -29,24 +28,24 @@ public class NavigationService {
 
     private final ExaminationProcessRepository examinationProcessRepository;
 
-    public Set<EntryYearDto> getAllEntryYears() {
-        Set<EntryYearDto> set = new HashSet<>();
+    public List<EntryYearDto> getAllEntryYears() {
+        List<EntryYearDto> list = new ArrayList<>();
 
         for (EntryYear entryYear : entryYearRepository.findAllByOrderByEntryYearAsc()) {
-            set.add(dtoTransformService.convertToEntryYearDto(entryYear));
+            list.add(dtoTransformService.convertToEntryYearDto(entryYear));
         }
 
-        return set;
+        return list;
     }
 
-    public Set<SemesterDto> getAllSemesters() {
-        Set<SemesterDto> set = new HashSet<>();
+    public List<SemesterDto> getAllSemesters() {
+        List<SemesterDto> list = new ArrayList<>();
 
         for (Semester semester : semesterRepository.findAllByOrderBySemesterNumberAsc()) {
-            set.add(dtoTransformService.convertToSemesterDto(semester));
+            list.add(dtoTransformService.convertToSemesterDto(semester));
         }
 
-        return set;
+        return list;
     }
 
     public Set<ExaminationProcessDto> getAllExaminations(int entryYear, int semester) {
