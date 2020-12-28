@@ -11,8 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.nsu.nsustudyhelper.dto.Credentials;
 import ru.nsu.nsustudyhelper.dto.UserDto;
 import ru.nsu.nsustudyhelper.dto.UserRegistrationDto;
-import ru.nsu.nsustudyhelper.entity.PasswordRestoreToken;
-import ru.nsu.nsustudyhelper.entity.User;
+import ru.nsu.nsustudyhelper.entity.security.PasswordRestoreToken;
+import ru.nsu.nsustudyhelper.entity.security.User;
+import ru.nsu.nsustudyhelper.exception.InvalidArgumentException;
 import ru.nsu.nsustudyhelper.repository.PasswordRestoreTokenRepository;
 import ru.nsu.nsustudyhelper.security.email.service.EmailService;
 import ru.nsu.nsustudyhelper.security.jwt.JwtTokenProvider;
@@ -67,7 +68,7 @@ public class AuthenticationService {
 
     private void checkEmail(UserDto userDto) {
         if (userService.findByEmail(userDto.getEmail()) != null) {
-            throw new IllegalArgumentException("Your email address is already registered: " + userDto.getEmail());
+            throw new InvalidArgumentException("Email адресс : " + userDto.getEmail() + "уже зарегистрирован");
         }
         log.info("IN checkEmail - email {} is available", userDto.getEmail());
     }

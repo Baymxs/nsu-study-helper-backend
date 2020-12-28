@@ -1,4 +1,4 @@
-package ru.nsu.nsustudyhelper.entity;
+package ru.nsu.nsustudyhelper.entity.security;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -3,7 +3,7 @@ package ru.nsu.nsustudyhelper.security.token.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import ru.nsu.nsustudyhelper.entity.PasswordRestoreToken;
+import ru.nsu.nsustudyhelper.entity.security.PasswordRestoreToken;
 import ru.nsu.nsustudyhelper.repository.PasswordRestoreTokenRepository;
 
 import java.util.Date;
@@ -21,8 +21,6 @@ public class PasswordRestoreTokenService {
     public PasswordRestoreTokenService(
             @Value("${jwt.token.expired}") Long validityInMilliSeconds,
             PasswordRestoreTokenRepository passwordRestoreTokenRepository
-
-
     ) {
         this.validityInMilliSeconds = validityInMilliSeconds;
         this.passwordRestoreTokenRepository = passwordRestoreTokenRepository;

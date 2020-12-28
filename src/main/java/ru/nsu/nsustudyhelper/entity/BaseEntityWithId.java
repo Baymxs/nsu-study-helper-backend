@@ -13,7 +13,11 @@ import java.util.Date;
 @MappedSuperclass
 @Setter
 @Getter
-public class BaseEntity {
+public class BaseEntityWithId {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @CreatedDate
     @Column(name = "created")
     private Date created = new Date();

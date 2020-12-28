@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import ru.nsu.nsustudyhelper.entity.Role;
-import ru.nsu.nsustudyhelper.entity.User;
+import ru.nsu.nsustudyhelper.entity.security.Role;
+import ru.nsu.nsustudyhelper.entity.security.User;
 import ru.nsu.nsustudyhelper.repository.RoleRepository;
 import ru.nsu.nsustudyhelper.repository.UserRepository;
 

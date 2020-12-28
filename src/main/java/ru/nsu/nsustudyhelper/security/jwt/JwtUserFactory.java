@@ -2,9 +2,9 @@ package ru.nsu.nsustudyhelper.security.jwt;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import ru.nsu.nsustudyhelper.entity.Role;
-import ru.nsu.nsustudyhelper.entity.Status;
-import ru.nsu.nsustudyhelper.entity.User;
+import ru.nsu.nsustudyhelper.entity.security.Role;
+import ru.nsu.nsustudyhelper.entity.security.Status;
+import ru.nsu.nsustudyhelper.entity.security.User;
 
 import java.util.ArrayList;
 import java.util.List;

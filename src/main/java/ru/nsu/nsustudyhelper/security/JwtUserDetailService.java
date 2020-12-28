@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import ru.nsu.nsustudyhelper.entity.User;
+import ru.nsu.nsustudyhelper.entity.security.User;
 import ru.nsu.nsustudyhelper.security.user.service.UserService;
 import ru.nsu.nsustudyhelper.security.jwt.JwtUser;
 import ru.nsu.nsustudyhelper.security.jwt.JwtUserFactory;

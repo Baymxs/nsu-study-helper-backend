@@ -1,7 +1,8 @@
-package ru.nsu.nsustudyhelper.entity;
+package ru.nsu.nsustudyhelper.entity.security;
 
 import lombok.Getter;
 import lombok.Setter;
+import ru.nsu.nsustudyhelper.entity.BaseEntityWithId;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -12,7 +13,7 @@ import java.util.List;
 @Table(name = "roles")
 @Setter
 @Getter
-public class Role extends BaseEntity {
+public class Role extends BaseEntityWithId {
     private String name;
 
     @ManyToMany(mappedBy = "roles")
