@@ -42,7 +42,7 @@ public class NavigationService {
     public Set<SemesterDto> getAllSemesters() {
         Set<SemesterDto> set = new HashSet<>();
 
-        for (Semester semester : semesterRepository.findAll()) {
+        for (Semester semester : semesterRepository.findAllByOrderBySemesterNumberAsc()) {
             set.add(dtoTransformService.convertToSemesterDto(semester));
         }
 

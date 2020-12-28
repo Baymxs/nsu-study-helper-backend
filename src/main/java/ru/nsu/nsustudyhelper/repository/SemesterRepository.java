@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface SemesterRepository extends CrudRepository<Semester, Long> {
     Optional<Semester> findBySemesterNumber(int semesterNumber);
+
+    Iterable<Semester> findAllByOrderBySemesterNumberAsc();
 }
