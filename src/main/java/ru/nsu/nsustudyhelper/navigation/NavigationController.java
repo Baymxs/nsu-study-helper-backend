@@ -10,6 +10,7 @@ import ru.nsu.nsustudyhelper.dto.EntryYearDto;
 import ru.nsu.nsustudyhelper.dto.ExaminationProcessDto;
 import ru.nsu.nsustudyhelper.dto.SemesterDto;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -20,12 +21,12 @@ public class NavigationController {
     private final NavigationService navigationService;
 
     @GetMapping("/entry-year/all")
-    public Set<EntryYearDto> getAllEntryYears() {
+    public List<EntryYearDto> getAllEntryYears() {
         return navigationService.getAllEntryYears();
     }
 
     @GetMapping("/semester/all")
-    public Set<SemesterDto> getAllSemesters() {
+    public List<SemesterDto> getAllSemesters() {
         return navigationService.getAllSemesters();
     }
 
