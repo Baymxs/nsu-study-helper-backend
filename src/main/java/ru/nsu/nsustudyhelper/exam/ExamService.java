@@ -6,14 +6,13 @@ import org.springframework.stereotype.Service;
 import ru.nsu.nsustudyhelper.dto.*;
 import ru.nsu.nsustudyhelper.entity.*;
 import ru.nsu.nsustudyhelper.entity.security.User;
-import ru.nsu.nsustudyhelper.repository.ExaminationCommentRepository;
-import ru.nsu.nsustudyhelper.repository.ExaminationProcessRepository;
-import ru.nsu.nsustudyhelper.repository.MarkRepository;
-import ru.nsu.nsustudyhelper.repository.UserRepository;
+import ru.nsu.nsustudyhelper.repository.*;
 import ru.nsu.nsustudyhelper.util.dtotransformservice.DtoTransformService;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -23,6 +22,7 @@ public class ExamService {
     private final DtoTransformService dtoTransformService;
     private final MarkRepository markRepository;
     private final UserRepository userRepository;
+    private final TeacherRepository teacherRepository;
     private final ExaminationProcessRepository examinationProcessRepository;
     private final ExaminationCommentRepository examinationCommentRepository;
 
@@ -98,17 +98,17 @@ public class ExamService {
         }
     }
 
-    public Set<TeacherDto> getExamTeachers(long examinationId) {
+    public List<TeacherDto> getExamTeachers(long examinationId) {
         ExaminationProcess examinationProcess = examinationProcessRepository.
                 findById(examinationId).
                 orElseThrow(() -> new IllegalArgumentException("Экзамен " + examinationId + " не найден."));
 
-        Set<TeacherDto> set = new HashSet<>();
+        List<TeacherDto> list = new ArrayList<>();
 
-        for (Teacher teacher : examinationProcess.getTeachers()) {
-            set.add(dtoTransformService.convertToTeacherDto(teacher));
+        for (Teacher teacher : teacherRepository.findAllByExaminationProcessesOrderByIdDesc(examinationProcess)) {
+            list.add(dtoTransformService.convertToTeacherDto(teacher));
         }
-        return set;
+        return list;
     }
 
     public CommentsDto getExamComments(Principal principal, long examinationId) {
@@ -116,15 +116,15 @@ public class ExamService {
                 findById(examinationId).
                 orElseThrow(() -> new IllegalArgumentException("Экзамен " + examinationId + " не найден."));
 
-        Set<CommentDto> set = new HashSet<>();
+        List<CommentDto> list = new ArrayList<>();
 
         for (ExaminationComment examinationComment : examinationCommentRepository.findAllByExaminationProcessOrderByIdDesc(examinationProcess)) {
-            set.add(dtoTransformService.convertToExaminationCommentDto(examinationComment));
+            list.add(dtoTransformService.convertToExaminationCommentDto(examinationComment));
         }
 
         CommentsDto commentsDto = new CommentsDto();
 
-        commentsDto.setComments(set);
+        commentsDto.setComments(list);
 
         if (principal == null) {
             commentsDto.setCurrentUserComment(null);

@@ -10,6 +10,7 @@ import ru.nsu.nsustudyhelper.dto.UserMarkDetailsDto;
 import ru.nsu.nsustudyhelper.dto.CommentSettingDto;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -30,7 +31,7 @@ public class ExamController {
     }
 
     @GetMapping("{exam-id}/teachers")
-    public Set<TeacherDto> getExamTeachers(@PathVariable(name = "exam-id") long examinationId) {
+    public List<TeacherDto> getExamTeachers(@PathVariable(name = "exam-id") long examinationId) {
         return examService.getExamTeachers(examinationId);
     }
 

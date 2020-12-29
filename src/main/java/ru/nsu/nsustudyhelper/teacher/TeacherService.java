@@ -10,7 +10,9 @@ import ru.nsu.nsustudyhelper.repository.*;
 import ru.nsu.nsustudyhelper.util.dtotransformservice.DtoTransformService;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -88,15 +90,15 @@ public class TeacherService {
                 findById(teacherId).
                 orElseThrow(() -> new IllegalArgumentException("Преподаватель " + teacherId + " не найден."));
 
-        Set<CommentDto> set = new HashSet<>();
+        List<CommentDto> list = new ArrayList<>();
 
         for (TeacherComment teacherComment : teacherCommentRepository.findAllByTeacherOrderByIdDesc(teacher)) {
-            set.add(dtoTransformService.convertToTeacherCommentDto(teacherComment));
+            list.add(dtoTransformService.convertToTeacherCommentDto(teacherComment));
         }
 
         CommentsDto commentsDto = new CommentsDto();
 
-        commentsDto.setComments(set);
+        commentsDto.setComments(list);
 
         if (principal == null) {
             commentsDto.setCurrentUserComment(null);
