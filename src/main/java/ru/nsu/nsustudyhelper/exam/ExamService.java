@@ -1,4 +1,4 @@
-package ru.nsu.nsustudyhelper.subjectstatistic;
+package ru.nsu.nsustudyhelper.exam;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +26,7 @@ public class ExamService {
     private final ExaminationProcessRepository examinationProcessRepository;
     private final ExaminationCommentRepository examinationCommentRepository;
 
-    public UserMarkDetailsDto getUserDetails(Principal principal, long examinationId) {
+    public UserMarkDetailsDto getExamDetails(Principal principal, long examinationId) {
         ExaminationProcess examinationProcess = examinationProcessRepository.
                 findById(examinationId).
                 orElseThrow(() -> new IllegalArgumentException("Экзамен " + examinationId + " не найден."));
@@ -118,7 +118,7 @@ public class ExamService {
 
         Set<ExaminationCommentDto> set = new HashSet<>();
 
-        for (ExaminationComment examinationComment : examinationCommentRepository.findAllByExaminationProcess(examinationProcess)) {
+        for (ExaminationComment examinationComment : examinationCommentRepository.findAllByExaminationProcessOrderByIdDesc(examinationProcess)) {
             set.add(dtoTransformService.convertToExaminationDto(examinationComment));
         }
 

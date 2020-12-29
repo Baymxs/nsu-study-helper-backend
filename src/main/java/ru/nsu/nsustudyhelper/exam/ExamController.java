@@ -1,4 +1,4 @@
-package ru.nsu.nsustudyhelper.subjectstatistic;
+package ru.nsu.nsustudyhelper.exam;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,8 +20,8 @@ public class ExamController {
     private final ExamService examService;
 
     @GetMapping("{exam-id}/details")
-    public UserMarkDetailsDto getUserDetails(Principal principal, @PathVariable(name = "exam-id") long examinationId) {
-        return examService.getUserDetails(principal, examinationId);
+    public UserMarkDetailsDto getExamDetails(Principal principal, @PathVariable(name = "exam-id") long examinationId) {
+        return examService.getExamDetails(principal, examinationId);
     }
 
     @PostMapping("{exam-id}/mark")

@@ -2,13 +2,14 @@ package ru.nsu.nsustudyhelper.teacher;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import ru.nsu.nsustudyhelper.dto.TeacherDto;
+import org.springframework.web.bind.annotation.*;
+import ru.nsu.nsustudyhelper.dto.ExamCommentsDto;
+import ru.nsu.nsustudyhelper.dto.MarkSettingDto;
+import ru.nsu.nsustudyhelper.dto.UserMarkDetailsDto;
+import ru.nsu.nsustudyhelper.entity.ExamCommentSettingDto;
+import ru.nsu.nsustudyhelper.exam.ExamService;
 
-import java.util.Set;
+import java.security.Principal;
 
 @RestController
 @RequestMapping(value = "/api/v1/teacher/")
@@ -17,8 +18,4 @@ import java.util.Set;
 public class TeacherController {
     private final TeacherService teacherService;
 
-    @GetMapping("{teacher-id}/details")
-    public Set<TeacherDto> getAllTeachers(@PathVariable(name = "teacher-id") long teacherId) {
-        return teacherService.getAllTeachers(teacherId);
-    }
 }

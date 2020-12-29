@@ -8,5 +8,5 @@ import ru.nsu.nsustudyhelper.entity.security.User;
 public interface ExaminationCommentRepository extends CrudRepository<ExaminationComment, Long> {
     ExaminationComment findByExaminationProcessAndUser(ExaminationProcess examinationProcess, User user);
 
-    Iterable<ExaminationComment> findAllByExaminationProcess(ExaminationProcess examinationProcess);
+    Iterable<ExaminationComment> findAllByExaminationProcessOrderByIdDesc(ExaminationProcess examinationProcess);
 }

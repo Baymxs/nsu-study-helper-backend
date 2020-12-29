@@ -15,16 +15,5 @@ import java.util.Set;
 @RequiredArgsConstructor
 @Slf4j
 public class TeacherService {
-    private final DtoTransformService dtoTransformService;
-    private final TeacherRepository teacherRepository;
 
-    public Set<TeacherDto> getAllTeachers(long teacherId) {
-        Set<TeacherDto> set = new HashSet<>();
-
-        for (Teacher teacher : teacherRepository.findAll()) {
-            set.add(dtoTransformService.convertToTeacherDto(teacher));
-        }
-
-        return set;
-    }
 }
