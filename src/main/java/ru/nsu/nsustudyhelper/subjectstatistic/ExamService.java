@@ -12,6 +12,7 @@ import ru.nsu.nsustudyhelper.repository.MarkRepository;
 import ru.nsu.nsustudyhelper.repository.UserRepository;
 import ru.nsu.nsustudyhelper.util.dtotransformservice.DtoTransformService;
 
+import javax.xml.stream.events.Comment;
 import java.security.Principal;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,8 +35,11 @@ public class ExamService {
         MarkDto markDto = null;
         if (principal != null) {
             User user = userRepository.findByName(principal.getName());
-            markDto = dtoTransformService.convertToMarkDto(markRepository.
-                    findByUserAndExaminationProcess(user, examinationProcess));
+            Mark mark = markRepository.
+                    findByUserAndExaminationProcess(user, examinationProcess);
+            if (mark != null) {
+                markDto = dtoTransformService.convertToMarkDto(mark);
+            }
         }
 
 
@@ -89,7 +93,6 @@ public class ExamService {
         } else {
             mark.setMark(markSettingDto.getMark());
         }
-
         markRepository.save(mark);
     }
 
@@ -103,7 +106,6 @@ public class ExamService {
         for (Teacher teacher : examinationProcess.getTeachers()) {
             set.add(dtoTransformService.convertToTeacherDto(teacher));
         }
-
         return set;
     }
 
@@ -126,9 +128,12 @@ public class ExamService {
             examCommentsDto.setCurrentUserComment(null);
         } else {
             User user = userRepository.findByName(principal.getName());
-            examCommentsDto.setCurrentUserComment(dtoTransformService.convertToExaminationDto(examinationCommentRepository.findByExaminationProcessAndUser(examinationProcess, user)));
-        }
 
+            ExaminationComment comment = examinationCommentRepository.findByExaminationProcessAndUser(examinationProcess, user);
+            if (comment != null) {
+                examCommentsDto.setCurrentUserComment(dtoTransformService.convertToExaminationDto(comment));
+            }
+        }
         return examCommentsDto;
     }
 
