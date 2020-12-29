@@ -49,6 +49,9 @@ public class TeacherService {
             sumRating += teacherRating.getRating();
         }
         float avgRating = sumRating/teacherRatings.size();
+        if (teacherRatings.isEmpty()) {
+            avgRating = sumRating;
+        }
 
         teacherDetailsDto.setRating(avgRating);
         return teacherDetailsDto;
