@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MarkDto {
-    private int mark;
+public class TeacherRatingDto {
+    private int rating;
 }

@@ -3,11 +3,10 @@ package ru.nsu.nsustudyhelper.teacher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import ru.nsu.nsustudyhelper.dto.ExamCommentsDto;
-import ru.nsu.nsustudyhelper.dto.MarkSettingDto;
-import ru.nsu.nsustudyhelper.dto.UserMarkDetailsDto;
-import ru.nsu.nsustudyhelper.entity.ExamCommentSettingDto;
-import ru.nsu.nsustudyhelper.exam.ExamService;
+import ru.nsu.nsustudyhelper.dto.CommentSettingDto;
+import ru.nsu.nsustudyhelper.dto.CommentsDto;
+import ru.nsu.nsustudyhelper.dto.RatingSettingDto;
+import ru.nsu.nsustudyhelper.dto.TeacherDetailsDto;
 
 import java.security.Principal;
 
@@ -18,4 +17,23 @@ import java.security.Principal;
 public class TeacherController {
     private final TeacherService teacherService;
 
+    @GetMapping("{teacher-id}/details")
+    public TeacherDetailsDto getTeacherDetails(Principal principal, @PathVariable(name = "teacher-id") long teacherId) {
+        return teacherService.getTeacherDetails(principal, teacherId);
+    }
+
+    @PostMapping("{teacher-id}/rating")
+    public void setUserTeacherRating(Principal principal, @PathVariable(name = "teacher-id") long teacherId, @RequestBody RatingSettingDto ratingSettingDto) {
+        teacherService.setUserRating(principal, teacherId, ratingSettingDto);
+    }
+
+    @GetMapping("{teacher-id}/comments")
+    public CommentsDto getTeacherComments(Principal principal, @PathVariable(name = "teacher-id") long teacherId) {
+        return teacherService.getTeacherComments(principal, teacherId);
+    }
+
+    @PostMapping("{teacher-id}/comment")
+    public void setTeacherComment(Principal principal, @PathVariable(name = "teacher-id") long teacherId, @RequestBody CommentSettingDto commentSettingDto) {
+        teacherService.setTeacherComment(principal, teacherId, commentSettingDto);
+    }
 }

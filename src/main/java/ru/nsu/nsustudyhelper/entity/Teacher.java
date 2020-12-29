@@ -20,6 +20,10 @@ public class Teacher extends BaseEntityWithId {
 
     private String lastName;
 
+    private String tStatus;
+
+    private String birthYear;
+
     @ManyToMany
     private Set<ExaminationProcess> examinationProcesses;
 

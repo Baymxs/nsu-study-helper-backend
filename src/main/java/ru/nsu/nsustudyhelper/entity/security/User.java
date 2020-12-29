@@ -26,7 +26,7 @@ public class User extends BaseEntityWithId {
     private Set<ExaminationComment> comments;
 
     @OneToMany(mappedBy = "user")
-    private Set<Mark> marks;
+    private Set<ExamMark> examMarks;
 
     @OneToMany(mappedBy = "user")
     private Set<TeacherComment> teacherCommentSet;

@@ -27,7 +27,7 @@ public class ExaminationProcess extends BaseEntityWithId {
     private Set<ExaminationComment> examinationCommentSet;
 
     @OneToMany(mappedBy = "examinationProcess")
-    private Set<Mark> markSet;
+    private Set<ExamMark> examMarkSet;
 
     @ManyToMany(mappedBy = "examinationProcesses")
     private Set<Teacher> teachers;

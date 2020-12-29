@@ -19,5 +19,5 @@ public class TeacherRating extends BaseEntityWithId {
     @ManyToOne
     private Teacher teacher;
 
-    private int score;
+    private int rating;
 }

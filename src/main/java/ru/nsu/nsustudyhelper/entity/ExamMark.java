@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Table(name = "marks")
 @Setter
 @Getter
-public class Mark extends BaseEntityWithId {
+public class ExamMark extends BaseEntityWithId {
     @ManyToOne
     private ExaminationProcess examinationProcess;
 

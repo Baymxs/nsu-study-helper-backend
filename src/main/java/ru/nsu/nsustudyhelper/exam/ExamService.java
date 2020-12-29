@@ -31,31 +31,31 @@ public class ExamService {
                 findById(examinationId).
                 orElseThrow(() -> new IllegalArgumentException("Экзамен " + examinationId + " не найден."));
 
-        MarkDto markDto = null;
+        ExamMarkDto examMarkDto = null;
         if (principal != null) {
             User user = userRepository.findByName(principal.getName());
-            Mark mark = markRepository.
+            ExamMark examMark = markRepository.
                     findByUserAndExaminationProcess(user, examinationProcess);
-            if (mark != null) {
-                markDto = dtoTransformService.convertToMarkDto(mark);
+            if (examMark != null) {
+                examMarkDto = dtoTransformService.convertToMarkDto(examMark);
             }
         }
 
 
         Set<MarkStatisticDto> set = new HashSet<>();
 
-        MarkStatisticDto mark5 =  new MarkStatisticDto(new MarkDto(5));
-        MarkStatisticDto mark4 =  new MarkStatisticDto(new MarkDto(4));
-        MarkStatisticDto mark3 =  new MarkStatisticDto(new MarkDto(3));
-        MarkStatisticDto mark2 =  new MarkStatisticDto(new MarkDto(2));
-        for (Mark mark : markRepository.findAllByExaminationProcess(examinationProcess)) {
-            if (mark.getMark() == 5) {
+        MarkStatisticDto mark5 =  new MarkStatisticDto(new ExamMarkDto(5));
+        MarkStatisticDto mark4 =  new MarkStatisticDto(new ExamMarkDto(4));
+        MarkStatisticDto mark3 =  new MarkStatisticDto(new ExamMarkDto(3));
+        MarkStatisticDto mark2 =  new MarkStatisticDto(new ExamMarkDto(2));
+        for (ExamMark examMark : markRepository.findAllByExaminationProcess(examinationProcess)) {
+            if (examMark.getMark() == 5) {
                 mark5.setCount(mark5.getCount() + 1);
-            } else if (mark.getMark() == 4) {
+            } else if (examMark.getMark() == 4) {
                 mark4.setCount(mark4.getCount() + 1);
-            } else if (mark.getMark() == 3) {
+            } else if (examMark.getMark() == 3) {
                 mark3.setCount(mark3.getCount() + 1);
-            } else if (mark.getMark() == 2) {
+            } else if (examMark.getMark() == 2) {
                 mark2.setCount(mark2.getCount() + 1);
             }
         }
@@ -67,7 +67,7 @@ public class ExamService {
 
         UserMarkDetailsDto userMarkDetailsDto = new UserMarkDetailsDto();
 
-        userMarkDetailsDto.setCurrentUserMark(markDto);
+        userMarkDetailsDto.setCurrentUserMark(examMarkDto);
         userMarkDetailsDto.setMarkStatistics(set);
 
         return userMarkDetailsDto;
@@ -80,21 +80,21 @@ public class ExamService {
                 findById(examinationId).
                 orElseThrow(() -> new IllegalArgumentException("Экзамен " + examinationId + " не найден."));
 
-        Mark mark = markRepository.
+        ExamMark examMark = markRepository.
                 findByUserAndExaminationProcess(user, examinationProcess);
-        if (mark == null) {
-            mark = new Mark();
-            mark.setExaminationProcess(examinationProcess);
-            mark.setUser(user);
+        if (examMark == null) {
+            examMark = new ExamMark();
+            examMark.setExaminationProcess(examinationProcess);
+            examMark.setUser(user);
         }
 
         if (markSettingDto.getMark() == null) {
-            markRepository.delete(mark);
+            markRepository.delete(examMark);
         } else if (markSettingDto.getMark() > 5 && markSettingDto.getMark() < 2) {
             throw new IllegalArgumentException("Оценка " + markSettingDto.getMark() + " явялется некорректной");
         } else {
-            mark.setMark(markSettingDto.getMark());
-            markRepository.save(mark);
+            examMark.setMark(markSettingDto.getMark());
+            markRepository.save(examMark);
         }
     }
 
@@ -111,35 +111,35 @@ public class ExamService {
         return set;
     }
 
-    public ExamCommentsDto getExamComments(Principal principal, long examinationId) {
+    public CommentsDto getExamComments(Principal principal, long examinationId) {
         ExaminationProcess examinationProcess = examinationProcessRepository.
                 findById(examinationId).
                 orElseThrow(() -> new IllegalArgumentException("Экзамен " + examinationId + " не найден."));
 
-        Set<ExaminationCommentDto> set = new HashSet<>();
+        Set<CommentDto> set = new HashSet<>();
 
         for (ExaminationComment examinationComment : examinationCommentRepository.findAllByExaminationProcessOrderByIdDesc(examinationProcess)) {
-            set.add(dtoTransformService.convertToExaminationDto(examinationComment));
+            set.add(dtoTransformService.convertToExaminationCommentDto(examinationComment));
         }
 
-        ExamCommentsDto examCommentsDto = new ExamCommentsDto();
+        CommentsDto commentsDto = new CommentsDto();
 
-        examCommentsDto.setComments(set);
+        commentsDto.setComments(set);
 
         if (principal == null) {
-            examCommentsDto.setCurrentUserComment(null);
+            commentsDto.setCurrentUserComment(null);
         } else {
             User user = userRepository.findByName(principal.getName());
 
             ExaminationComment comment = examinationCommentRepository.findByExaminationProcessAndUser(examinationProcess, user);
             if (comment != null) {
-                examCommentsDto.setCurrentUserComment(dtoTransformService.convertToExaminationDto(comment));
+                commentsDto.setCurrentUserComment(dtoTransformService.convertToExaminationCommentDto(comment));
             }
         }
-        return examCommentsDto;
+        return commentsDto;
     }
 
-    public void setExamComment(Principal principal, long examinationId, ExamCommentSettingDto examCommentSettingDto) {
+    public void setExamComment(Principal principal, long examinationId, CommentSettingDto commentSettingDto) {
         ExaminationProcess examinationProcess = examinationProcessRepository.
                 findById(examinationId).
                 orElseThrow(() -> new IllegalArgumentException("Экзамен " + examinationId + " не найден."));
@@ -148,19 +148,19 @@ public class ExamService {
         ExaminationComment examComment = examinationCommentRepository.findByExaminationProcessAndUser(examinationProcess, user);
 
         if (examComment == null) {
-            if (examCommentSettingDto.getCommentText().length() != 0) {
+            if (commentSettingDto.getCommentText().length() != 0) {
                 examComment = new ExaminationComment();
 
                 examComment.setExaminationProcess(examinationProcess);
                 examComment.setUser(user);
-                examComment.setCommentText(examCommentSettingDto.getCommentText());
+                examComment.setCommentText(commentSettingDto.getCommentText());
 
                 examinationCommentRepository.save(examComment);
             }
         } else
         {
-            examComment.setCommentText(examCommentSettingDto.getCommentText());
-            if (examCommentSettingDto.getCommentText().length() != 0) {
+            examComment.setCommentText(commentSettingDto.getCommentText());
+            if (commentSettingDto.getCommentText().length() != 0) {
                 examinationCommentRepository.save(examComment);
             } else {
                 examinationCommentRepository.delete(examComment);

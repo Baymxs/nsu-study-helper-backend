@@ -3,11 +3,11 @@ package ru.nsu.nsustudyhelper.exam;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-import ru.nsu.nsustudyhelper.dto.ExamCommentsDto;
+import ru.nsu.nsustudyhelper.dto.CommentsDto;
 import ru.nsu.nsustudyhelper.dto.MarkSettingDto;
 import ru.nsu.nsustudyhelper.dto.TeacherDto;
 import ru.nsu.nsustudyhelper.dto.UserMarkDetailsDto;
-import ru.nsu.nsustudyhelper.entity.ExamCommentSettingDto;
+import ru.nsu.nsustudyhelper.dto.CommentSettingDto;
 
 import java.security.Principal;
 import java.util.Set;
@@ -35,12 +35,12 @@ public class ExamController {
     }
 
     @GetMapping("{exam-id}/comments")
-    public ExamCommentsDto getExamComments(Principal principal, @PathVariable(name = "exam-id") long examinationId) {
+    public CommentsDto getExamComments(Principal principal, @PathVariable(name = "exam-id") long examinationId) {
         return examService.getExamComments(principal, examinationId);
     }
 
     @PostMapping("{exam-id}/comment")
-    public void setExamComment(Principal principal, @PathVariable(name = "exam-id") long examinationId, @RequestBody ExamCommentSettingDto examCommentSettingDto) {
-        examService.setExamComment(principal, examinationId, examCommentSettingDto);
+    public void setExamComment(Principal principal, @PathVariable(name = "exam-id") long examinationId, @RequestBody CommentSettingDto commentSettingDto) {
+        examService.setExamComment(principal, examinationId, commentSettingDto);
     }
 }

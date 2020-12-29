@@ -28,15 +28,23 @@ public class DtoTransformService {
         return modelMapper.map(examinationProcess, ExaminationProcessDto.class);
     }
 
-    public MarkDto convertToMarkDto(Mark mark) {
-        return modelMapper.map(mark, MarkDto.class);
+    public ExamMarkDto convertToMarkDto(ExamMark examMark) {
+        return modelMapper.map(examMark, ExamMarkDto.class);
+    }
+
+    public TeacherRatingDto convertToRatingDto(TeacherRating teacherRating) {
+        return modelMapper.map(teacherRating, TeacherRatingDto.class);
     }
 
     public TeacherDto convertToTeacherDto(Teacher teacher) {
         return modelMapper.map(teacher, TeacherDto.class);
     }
 
-    public ExaminationCommentDto convertToExaminationDto(ExaminationComment examinationComment) {
-        return modelMapper.map(examinationComment, ExaminationCommentDto.class);
+    public CommentDto convertToExaminationCommentDto(ExaminationComment examinationComment) {
+        return modelMapper.map(examinationComment, CommentDto.class);
+    }
+
+    public CommentDto convertToTeacherCommentDto(TeacherComment teacherComment) {
+        return modelMapper.map(teacherComment, CommentDto.class);
     }
 }

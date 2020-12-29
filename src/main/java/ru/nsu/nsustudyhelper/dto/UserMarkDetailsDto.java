@@ -6,6 +6,6 @@ import java.util.Set;
 
 @Data
 public class UserMarkDetailsDto {
-    private MarkDto currentUserMark;
+    private ExamMarkDto currentUserMark;
     private Set<MarkStatisticDto> markStatistics;
 }
