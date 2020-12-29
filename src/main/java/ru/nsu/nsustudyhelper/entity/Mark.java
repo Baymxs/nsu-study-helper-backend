@@ -21,5 +21,5 @@ public class Mark extends BaseEntityWithId {
     @ManyToOne
     private User user;
 
-    private Integer mark;
+    private int mark;
 }

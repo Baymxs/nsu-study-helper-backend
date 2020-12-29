@@ -12,7 +12,6 @@ import ru.nsu.nsustudyhelper.repository.MarkRepository;
 import ru.nsu.nsustudyhelper.repository.UserRepository;
 import ru.nsu.nsustudyhelper.util.dtotransformservice.DtoTransformService;
 
-import javax.xml.stream.events.Comment;
 import java.security.Principal;
 import java.util.HashSet;
 import java.util.Set;
@@ -81,19 +80,22 @@ public class ExamService {
                 findById(examinationId).
                 orElseThrow(() -> new IllegalArgumentException("Экзамен " + examinationId + " не найден."));
 
-        Mark mark = new Mark();
-
-        mark.setExaminationProcess(examinationProcess);
-        mark.setUser(user);
+        Mark mark = markRepository.
+                findByUserAndExaminationProcess(user, examinationProcess);
+        if (mark == null) {
+            mark = new Mark();
+            mark.setExaminationProcess(examinationProcess);
+            mark.setUser(user);
+        }
 
         if (markSettingDto.getMark() == null) {
-            mark.setMark(null);
+            markRepository.delete(mark);
         } else if (markSettingDto.getMark() > 5 && markSettingDto.getMark() < 2) {
             throw new IllegalArgumentException("Оценка " + markSettingDto.getMark() + " явялется некорректной");
         } else {
             mark.setMark(markSettingDto.getMark());
+            markRepository.save(mark);
         }
-        markRepository.save(mark);
     }
 
     public Set<TeacherDto> getExamTeachers(long examinationId) {

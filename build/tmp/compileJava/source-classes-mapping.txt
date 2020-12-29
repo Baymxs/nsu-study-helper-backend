@@ -1,135 +1,141 @@
-ru/nsu/nsustudyhelper/dto/TokenDto.java
- ru.nsu.nsustudyhelper.dto.TokenDto
-ru/nsu/nsustudyhelper/dto/NewPasswordDto.java
- ru.nsu.nsustudyhelper.dto.NewPasswordDto
 ru/nsu/nsustudyhelper/security/jwt/JwtUser.java
  ru.nsu.nsustudyhelper.security.jwt.JwtUser
-ru/nsu/nsustudyhelper/config/ModelMapperConfig.java
- ru.nsu.nsustudyhelper.config.ModelMapperConfig
-ru/nsu/nsustudyhelper/dto/UserDto.java
- ru.nsu.nsustudyhelper.dto.UserDto
-ru/nsu/nsustudyhelper/NsuStudyHelperApplication.java
- ru.nsu.nsustudyhelper.NsuStudyHelperApplication
-ru/nsu/nsustudyhelper/security/email/service/EmailService.java
- ru.nsu.nsustudyhelper.security.email.service.EmailService
+ru/nsu/nsustudyhelper/dto/EntryYearDto.java
+ ru.nsu.nsustudyhelper.dto.EntryYearDto
+ru/nsu/nsustudyhelper/navigation/NavigationController.java
+ ru.nsu.nsustudyhelper.navigation.NavigationController
+ru/nsu/nsustudyhelper/dto/SemesterDto.java
+ ru.nsu.nsustudyhelper.dto.SemesterDto
+ru/nsu/nsustudyhelper/dto/ExaminationTypeDto.java
+ ru.nsu.nsustudyhelper.dto.ExaminationTypeDto
 ru/nsu/nsustudyhelper/util/ClockConfig.java
  ru.nsu.nsustudyhelper.util.ClockConfig
-ru/nsu/nsustudyhelper/security/jwt/JwtAuthenticationException.java
- ru.nsu.nsustudyhelper.security.jwt.JwtAuthenticationException
-ru/nsu/nsustudyhelper/dto/UserRegistrationDto.java
- ru.nsu.nsustudyhelper.dto.UserRegistrationDto
-ru/nsu/nsustudyhelper/util/AddressProperties.java
- ru.nsu.nsustudyhelper.util.AddressProperties
-ru/nsu/nsustudyhelper/dto/EmailRestoreDto.java
- ru.nsu.nsustudyhelper.dto.EmailRestoreDto
-ru/nsu/nsustudyhelper/dto/Credentials.java
- ru.nsu.nsustudyhelper.dto.Credentials
-ru/nsu/nsustudyhelper/entity/EntryYear.java
- ru.nsu.nsustudyhelper.entity.EntryYear
-ru/nsu/nsustudyhelper/entity/ExaminationComment.java
- ru.nsu.nsustudyhelper.entity.ExaminationComment
-ru/nsu/nsustudyhelper/security/jwt/JwtUserFactory.java
- ru.nsu.nsustudyhelper.security.jwt.JwtUserFactory
-ru/nsu/nsustudyhelper/entity/Teacher.java
- ru.nsu.nsustudyhelper.entity.Teacher
-ru/nsu/nsustudyhelper/config/SecurityConfig.java
- ru.nsu.nsustudyhelper.config.SecurityConfig
-ru/nsu/nsustudyhelper/repository/PasswordRestoreTokenRepository.java
- ru.nsu.nsustudyhelper.repository.PasswordRestoreTokenRepository
-ru/nsu/nsustudyhelper/entity/TeacherRating.java
- ru.nsu.nsustudyhelper.entity.TeacherRating
+ru/nsu/nsustudyhelper/security/user/service/UserService.java
+ ru.nsu.nsustudyhelper.security.user.service.UserService
+ru/nsu/nsustudyhelper/repository/UserRepository.java
+ ru.nsu.nsustudyhelper.repository.UserRepository
 ru/nsu/nsustudyhelper/security/jwt/JwtTokenFilter.java
  ru.nsu.nsustudyhelper.security.jwt.JwtTokenFilter
-ru/nsu/nsustudyhelper/entity/security/Status.java
- ru.nsu.nsustudyhelper.entity.security.Status
-ru/nsu/nsustudyhelper/entity/BaseEntityWithId.java
- ru.nsu.nsustudyhelper.entity.BaseEntityWithId
+ru/nsu/nsustudyhelper/security/email/service/EmailService.java
+ ru.nsu.nsustudyhelper.security.email.service.EmailService
+ru/nsu/nsustudyhelper/repository/ExaminationCommentRepository.java
+ ru.nsu.nsustudyhelper.repository.ExaminationCommentRepository
 ru/nsu/nsustudyhelper/security/jwt/JwtTokenProvider.java
  ru.nsu.nsustudyhelper.security.jwt.JwtTokenProvider
 ru/nsu/nsustudyhelper/entity/TeacherComment.java
  ru.nsu.nsustudyhelper.entity.TeacherComment
-ru/nsu/nsustudyhelper/repository/ExaminationProcessRepository.java
- ru.nsu.nsustudyhelper.repository.ExaminationProcessRepository
-ru/nsu/nsustudyhelper/security/jwt/JwtConfigurer.java
- ru.nsu.nsustudyhelper.security.jwt.JwtConfigurer
-ru/nsu/nsustudyhelper/entity/security/PasswordRestoreToken.java
- ru.nsu.nsustudyhelper.entity.security.PasswordRestoreToken
+ru/nsu/nsustudyhelper/repository/PasswordRestoreTokenRepository.java
+ ru.nsu.nsustudyhelper.repository.PasswordRestoreTokenRepository
+ru/nsu/nsustudyhelper/repository/EntryYearRepository.java
+ ru.nsu.nsustudyhelper.repository.EntryYearRepository
 ru/nsu/nsustudyhelper/entity/BaseEntity.java
  ru.nsu.nsustudyhelper.entity.BaseEntity
-ru/nsu/nsustudyhelper/entity/security/User.java
- ru.nsu.nsustudyhelper.entity.security.User
 ru/nsu/nsustudyhelper/entity/Subject.java
  ru.nsu.nsustudyhelper.entity.Subject
-ru/nsu/nsustudyhelper/repository/RoleRepository.java
- ru.nsu.nsustudyhelper.repository.RoleRepository
 ru/nsu/nsustudyhelper/entity/ExaminationProcess.java
  ru.nsu.nsustudyhelper.entity.ExaminationProcess
-ru/nsu/nsustudyhelper/entity/ExaminationType.java
- ru.nsu.nsustudyhelper.entity.ExaminationType
-ru/nsu/nsustudyhelper/entity/security/Role.java
- ru.nsu.nsustudyhelper.entity.security.Role
 ru/nsu/nsustudyhelper/entity/Semester.java
  ru.nsu.nsustudyhelper.entity.Semester
-ru/nsu/nsustudyhelper/dto/EntryYearDto.java
- ru.nsu.nsustudyhelper.dto.EntryYearDto
+ru/nsu/nsustudyhelper/dto/ExamCommentsDto.java
+ ru.nsu.nsustudyhelper.dto.ExamCommentsDto
+ru/nsu/nsustudyhelper/repository/MarkRepository.java
+ ru.nsu.nsustudyhelper.repository.MarkRepository
+ru/nsu/nsustudyhelper/entity/ExaminationType.java
+ ru.nsu.nsustudyhelper.entity.ExaminationType
+ru/nsu/nsustudyhelper/util/AddressProperties.java
+ ru.nsu.nsustudyhelper.util.AddressProperties
+ru/nsu/nsustudyhelper/repository/SemesterRepository.java
+ ru.nsu.nsustudyhelper.repository.SemesterRepository
 ru/nsu/nsustudyhelper/BaseExceptionHandler.java
  ru.nsu.nsustudyhelper.BaseExceptionHandler
  ru.nsu.nsustudyhelper.BaseExceptionHandler$ExceptionWrapper
-ru/nsu/nsustudyhelper/dto/UserMarkDetailsDto.java
- ru.nsu.nsustudyhelper.dto.UserMarkDetailsDto
-ru/nsu/nsustudyhelper/dto/SemesterDto.java
- ru.nsu.nsustudyhelper.dto.SemesterDto
+ru/nsu/nsustudyhelper/repository/TeacherRepository.java
+ ru.nsu.nsustudyhelper.repository.TeacherRepository
 ru/nsu/nsustudyhelper/exception/InvalidArgumentException.java
  ru.nsu.nsustudyhelper.exception.InvalidArgumentException
-ru/nsu/nsustudyhelper/security/token/service/PasswordRestoreTokenService.java
- ru.nsu.nsustudyhelper.security.token.service.PasswordRestoreTokenService
-ru/nsu/nsustudyhelper/repository/SemesterRepository.java
- ru.nsu.nsustudyhelper.repository.SemesterRepository
-ru/nsu/nsustudyhelper/dto/MarkDto.java
- ru.nsu.nsustudyhelper.dto.MarkDto
-ru/nsu/nsustudyhelper/dto/MarkStatisticDto.java
- ru.nsu.nsustudyhelper.dto.MarkStatisticDto
-ru/nsu/nsustudyhelper/security/user/service/UserService.java
- ru.nsu.nsustudyhelper.security.user.service.UserService
+ru/nsu/nsustudyhelper/entity/TeacherRating.java
+ ru.nsu.nsustudyhelper.entity.TeacherRating
+ru/nsu/nsustudyhelper/repository/RoleRepository.java
+ ru.nsu.nsustudyhelper.repository.RoleRepository
+ru/nsu/nsustudyhelper/dto/UserRegistrationDto.java
+ ru.nsu.nsustudyhelper.dto.UserRegistrationDto
+ru/nsu/nsustudyhelper/entity/security/Role.java
+ ru.nsu.nsustudyhelper.entity.security.Role
+ru/nsu/nsustudyhelper/repository/ExaminationProcessRepository.java
+ ru.nsu.nsustudyhelper.repository.ExaminationProcessRepository
+ru/nsu/nsustudyhelper/entity/security/User.java
+ ru.nsu.nsustudyhelper.entity.security.User
+ru/nsu/nsustudyhelper/dto/SubjectDto.java
+ ru.nsu.nsustudyhelper.dto.SubjectDto
+ru/nsu/nsustudyhelper/NsuStudyHelperApplication.java
+ ru.nsu.nsustudyhelper.NsuStudyHelperApplication
+ru/nsu/nsustudyhelper/dto/Credentials.java
+ ru.nsu.nsustudyhelper.dto.Credentials
+ru/nsu/nsustudyhelper/entity/security/PasswordRestoreToken.java
+ ru.nsu.nsustudyhelper.entity.security.PasswordRestoreToken
+ru/nsu/nsustudyhelper/dto/TokenDto.java
+ ru.nsu.nsustudyhelper.dto.TokenDto
+ru/nsu/nsustudyhelper/entity/EntryYear.java
+ ru.nsu.nsustudyhelper.entity.EntryYear
 ru/nsu/nsustudyhelper/dto/TeacherDto.java
  ru.nsu.nsustudyhelper.dto.TeacherDto
-ru/nsu/nsustudyhelper/repository/ExaminationCommentRepository.java
- ru.nsu.nsustudyhelper.repository.ExaminationCommentRepository
-ru/nsu/nsustudyhelper/repository/UserRepository.java
- ru.nsu.nsustudyhelper.repository.UserRepository
-ru/nsu/nsustudyhelper/dto/ExaminationCommentDto.java
- ru.nsu.nsustudyhelper.dto.ExaminationCommentDto
-ru/nsu/nsustudyhelper/repository/MarkRepository.java
- ru.nsu.nsustudyhelper.repository.MarkRepository
-ru/nsu/nsustudyhelper/dto/MarkSettingDto.java
- ru.nsu.nsustudyhelper.dto.MarkSettingDto
-ru/nsu/nsustudyhelper/repository/EntryYearRepository.java
- ru.nsu.nsustudyhelper.repository.EntryYearRepository
+ru/nsu/nsustudyhelper/config/ModelMapperConfig.java
+ ru.nsu.nsustudyhelper.config.ModelMapperConfig
 ru/nsu/nsustudyhelper/entity/Mark.java
  ru.nsu.nsustudyhelper.entity.Mark
-ru/nsu/nsustudyhelper/security/JwtUserDetailService.java
- ru.nsu.nsustudyhelper.security.JwtUserDetailService
-ru/nsu/nsustudyhelper/dto/ExamCommentsDto.java
- ru.nsu.nsustudyhelper.dto.ExamCommentsDto
-ru/nsu/nsustudyhelper/entity/ExamCommentSettingDto.java
- ru.nsu.nsustudyhelper.entity.ExamCommentSettingDto
-ru/nsu/nsustudyhelper/subjectstatistic/ExamController.java
- ru.nsu.nsustudyhelper.subjectstatistic.ExamController
 ru/nsu/nsustudyhelper/dto/ExaminationProcessDto.java
  ru.nsu.nsustudyhelper.dto.ExaminationProcessDto
+ru/nsu/nsustudyhelper/security/JwtUserDetailService.java
+ ru.nsu.nsustudyhelper.security.JwtUserDetailService
+ru/nsu/nsustudyhelper/security/jwt/JwtUserFactory.java
+ ru.nsu.nsustudyhelper.security.jwt.JwtUserFactory
+ru/nsu/nsustudyhelper/entity/ExamCommentSettingDto.java
+ ru.nsu.nsustudyhelper.entity.ExamCommentSettingDto
+ru/nsu/nsustudyhelper/config/SecurityConfig.java
+ ru.nsu.nsustudyhelper.config.SecurityConfig
+ru/nsu/nsustudyhelper/dto/EmailRestoreDto.java
+ ru.nsu.nsustudyhelper.dto.EmailRestoreDto
+ru/nsu/nsustudyhelper/entity/ExaminationComment.java
+ ru.nsu.nsustudyhelper.entity.ExaminationComment
+ru/nsu/nsustudyhelper/dto/NewPasswordDto.java
+ ru.nsu.nsustudyhelper.dto.NewPasswordDto
+ru/nsu/nsustudyhelper/entity/security/Status.java
+ ru.nsu.nsustudyhelper.entity.security.Status
+ru/nsu/nsustudyhelper/entity/BaseEntityWithId.java
+ ru.nsu.nsustudyhelper.entity.BaseEntityWithId
+ru/nsu/nsustudyhelper/security/jwt/JwtAuthenticationException.java
+ ru.nsu.nsustudyhelper.security.jwt.JwtAuthenticationException
+ru/nsu/nsustudyhelper/security/token/service/PasswordRestoreTokenService.java
+ ru.nsu.nsustudyhelper.security.token.service.PasswordRestoreTokenService
+ru/nsu/nsustudyhelper/security/jwt/JwtConfigurer.java
+ ru.nsu.nsustudyhelper.security.jwt.JwtConfigurer
+ru/nsu/nsustudyhelper/dto/ExaminationCommentDto.java
+ ru.nsu.nsustudyhelper.dto.ExaminationCommentDto
+ru/nsu/nsustudyhelper/dto/UserDto.java
+ ru.nsu.nsustudyhelper.dto.UserDto
+ru/nsu/nsustudyhelper/entity/Teacher.java
+ ru.nsu.nsustudyhelper.entity.Teacher
+ru/nsu/nsustudyhelper/dto/UserMarkDetailsDto.java
+ ru.nsu.nsustudyhelper.dto.UserMarkDetailsDto
 ru/nsu/nsustudyhelper/util/dtotransformservice/DtoTransformService.java
  ru.nsu.nsustudyhelper.util.dtotransformservice.DtoTransformService
 ru/nsu/nsustudyhelper/navigation/NavigationService.java
  ru.nsu.nsustudyhelper.navigation.NavigationService
-ru/nsu/nsustudyhelper/dto/ExaminationTypeDto.java
- ru.nsu.nsustudyhelper.dto.ExaminationTypeDto
+ru/nsu/nsustudyhelper/dto/MarkStatisticDto.java
+ ru.nsu.nsustudyhelper.dto.MarkStatisticDto
+ru/nsu/nsustudyhelper/teacher/TeacherService.java
+ ru.nsu.nsustudyhelper.teacher.TeacherService
 ru/nsu/nsustudyhelper/security/AuthenticationController.java
  ru.nsu.nsustudyhelper.security.AuthenticationController
+ru/nsu/nsustudyhelper/teacher/TeacherController.java
+ ru.nsu.nsustudyhelper.teacher.TeacherController
 ru/nsu/nsustudyhelper/security/AuthenticationService.java
  ru.nsu.nsustudyhelper.security.AuthenticationService
-ru/nsu/nsustudyhelper/dto/SubjectDto.java
- ru.nsu.nsustudyhelper.dto.SubjectDto
-ru/nsu/nsustudyhelper/navigation/NavigationController.java
- ru.nsu.nsustudyhelper.navigation.NavigationController
+ru/nsu/nsustudyhelper/dto/MarkDto.java
+ ru.nsu.nsustudyhelper.dto.MarkDto
+ru/nsu/nsustudyhelper/subjectstatistic/ExamController.java
+ ru.nsu.nsustudyhelper.subjectstatistic.ExamController
+ru/nsu/nsustudyhelper/dto/MarkSettingDto.java
+ ru.nsu.nsustudyhelper.dto.MarkSettingDto
 ru/nsu/nsustudyhelper/subjectstatistic/ExamService.java
  ru.nsu.nsustudyhelper.subjectstatistic.ExamService
