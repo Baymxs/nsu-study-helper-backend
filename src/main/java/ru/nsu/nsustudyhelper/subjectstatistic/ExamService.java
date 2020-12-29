@@ -145,23 +145,26 @@ public class ExamService {
                 orElseThrow(() -> new IllegalArgumentException("Экзамен " + examinationId + " не найден."));
 
         User user = userRepository.findByName(principal.getName());
-
-
-
         ExaminationComment examComment = examinationCommentRepository.findByExaminationProcessAndUser(examinationProcess, user);
 
         if (examComment == null) {
-            ExaminationComment examinationComment = new ExaminationComment();
+            if (examCommentSettingDto.getCommentText().length() != 0) {
+                examComment = new ExaminationComment();
 
-            examinationComment.setExaminationProcess(examinationProcess);
-            examinationComment.setUser(user);
-            examinationComment.setCommentText(examCommentSettingDto.getText());
+                examComment.setExaminationProcess(examinationProcess);
+                examComment.setUser(user);
+                examComment.setCommentText(examCommentSettingDto.getCommentText());
 
-            examinationCommentRepository.save(examinationComment);
-        } else {
-            examComment.setCommentText(examCommentSettingDto.getText());
-
-            examinationCommentRepository.save(examComment);
+                examinationCommentRepository.save(examComment);
+            }
+        } else
+        {
+            examComment.setCommentText(examCommentSettingDto.getCommentText());
+            if (examCommentSettingDto.getCommentText().length() != 0) {
+                examinationCommentRepository.save(examComment);
+            } else {
+                examinationCommentRepository.delete(examComment);
+            }
         }
     }
 }
