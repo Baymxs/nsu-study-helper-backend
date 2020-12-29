@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
@@ -15,8 +16,10 @@ import javax.mail.util.ByteArrayDataSource;
 public class EmailService {
     private final JavaMailSender emailSender;
 
+    @Async
     public void sendMessage(String[] to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("team.study.helper@yandex.ru");
         message.setTo(to);
         message.setSubject(subject);
         message.setText(text);
@@ -24,7 +27,7 @@ public class EmailService {
     }
 
     public void sendMessage(String to, String subject, String body) {
-        sendMessage(new String[]{to}, subject, body);
+        new Thread(() -> sendMessage(new String[]{to}, subject, body)).start();
     }
 
     public void sendMessageWithImage(String[] to, String subject, String body, byte[] image, String format) throws MessagingException {
